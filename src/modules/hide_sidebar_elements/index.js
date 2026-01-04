@@ -128,8 +128,16 @@ class HideSidebarElementsModule {
     setTimeout(() => {
       const firstChannelLink = document.querySelector('a.side-nav-card__link[data-a-id="followed-channel-0"]');
       if (firstChannelLink == null) return;
-      document.querySelector('.side-nav button[data-a-target="side-nav-show-more-button"]')?.click();
+      clickShowMoreButton();
     }, 1000);
+  }
+
+  clickShowMoreButton() {
+    const showMoreButton = document.querySelector('.side-nav button[data-a-target="side-nav-show-more-button"]');
+    if (showMoreButton == null) return;
+    showMoreButton?.click();
+    // keep clicking Show More until it disappears
+    setTimeout(() => clickShowMoreButton(), 200);    
   }
 }
 
